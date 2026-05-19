@@ -1,0 +1,455 @@
+/* FONT IMPORT */
+@font-face {
+  font-family: 'Photograph';
+  src: url(font/Photograph\ Signature.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url(font/Poppins-SemiBold.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Alterday';
+  src: url(font/Alterday.otf) format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mayonice';
+  src: url(font/Mayonice.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Coolvetica';
+  src: url(font/Coolvetica\ Rg.otf) format('opentype');
+  font-weight:normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Baret';
+  src: url(font/Barett\ Street.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url(font/Inter-VariableFont_opsz\,wght.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'matcha';
+  src: url(font/Matcha\ Cih.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'pasar';
+  src: url(font/Pasartulis\ PERSONAL\ USE\ ONLY!.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media (max-width: 900px) {
+  .intro-right {
+    display: flex;
+    justify-content: center;   /* FOTO DI TENGAH */
+    width: 100%;
+  }
+
+  .intro-right img {
+    max-width: 350px;          /* lebih pas di layar kecil */
+    margin: 0 auto;            /* pastikan benar-benar center */
+  }
+
+  .intro-wrap {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;             /* padding kecil biar ga kepotong */
+  }
+
+  .intro-left {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+
+  .intro-box {
+    margin-left: 0;
+  }
+}
+
+
+/* GENERAL STYLE */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, #084B9A, #4A90E2, #FFFFFF); /* Tetap ini */
+  background-size: 100% 100%;
+  background-position: center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  color: #084B9A; /* Warna teks default */
+}
+
+/* HEADER + NAV */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 15px 40px; /* Padding header */
+  color: #084B9A;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+header h1 {
+  margin: 0;
+  margin-left: 60px;
+  display: flex;
+  align-items: center;
+}
+
+header h1 img {
+  height: 50px; /* Atur tinggi logo agar sesuai dengan header */
+  width: auto;  /* Lebar otomatis mengikuti proporsi gambar */
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  margin-right: 60px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #084B9A;
+  padding: 10px 20px; /* Padding lebih besar */
+  font-size: 22px;
+  font-family: 'pasar';
+  background-image: linear-gradient(#084B9A, #084B9A);
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .25s ease;
+}
+
+nav ul li a:hover {
+  background-size: 100% 2px;
+  color: #4A90E2; /* Sedikit lebih terang saat hover */
+  opacity: 1;
+}
+
+.nav-links { /* Tambahkan kelas ini ke elemen ul di HTML Anda */
+  transition: transform 0.3s ease-in-out;
+}
+
+
+/* INTRO SECTION */
+.intro-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    padding: 60px;
+}
+
+.intro-left {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.intro-box {
+    padding: 25px;
+    margin-left: 50px;
+}
+
+.intro-short h2 {
+    font-family: 'Coolvetica';
+    font-size: 80px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #FFFFFF; /* Putih */
+}
+
+.intro-short p {
+    font-family: 'Poppins';
+    font-size: 25px;
+    color: #FFFFFF; /* Putih */
+}
+
+/* FOTO KANAN */
+.intro-right {
+    padding-right: 40px;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.intro-right img {
+    width: 100%;
+    max-width: 450px;   /* ukuran maksimal foto */
+    height: auto;
+    border-radius: 120px 0 120px 0;
+    display: block;
+    margin-right: 0; /* Pastikan tidak ada margin kanan */
+    margin: 0;
+    box-shadow: 20px 20px 0px rgba(255, 255, 255, 0.2);
+    transition: transform 0.5s ease, border-radius 0.5s ease;
+}
+
+.intro-right img:hover {
+    transform: scale(1.02) rotate(1deg);
+    border-radius: 60px 0 60px 0;
+}
+
+/* Gettouch */
+.gettouch {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px;
+    margin-top: 20px;
+    margin-bottom: 180px;
+}
+
+.gtwrap {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.gtbox {
+    padding: 25px;
+    text-align: center;
+}
+
+.gttext h3{
+    text-align: center;
+    font-family: 'Coolvetica';
+    font-size: 60px;
+    font-weight: 500;
+    margin: 10px;
+    letter-spacing: 2px; /* Sedikit kurangi spacing */
+    color: #ffffff; /* Biru utama */
+}
+
+.gt-subtitle {
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 25px;
+    font-weight: 400;
+    margin: 20px;
+    color: #ffffff; /* Biru utama */
+    opacity: 0.8; /* Sedikit lebih jelas */
+}
+
+/* SERVICES GRID & CTA */
+.services-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background: #FFFFFF;
+    border: 3px solid #084B9A;
+    padding: 30px;
+    border-radius: 20px;
+    width: 280px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi bouncy */
+    backdrop-filter: blur(5px);
+    text-align: left;
+    box-shadow: 8px 8px 0px #084B9A;
+}
+
+.service-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px #084B9A;
+}
+
+.service-card h4 {
+    font-family: 'Coolvetica';
+    font-size: 28px;
+    margin: 0 0 15px 0;
+    color: #084B9A; /* Biru utama */
+    font-weight: 500;
+}
+
+.service-card p {
+    font-family: 'Inter';
+    font-size: 15px;
+    line-height: 1.6; /* Line height */
+    color: #333; /* Darker grey */
+    margin: 0;
+}
+
+.cta-wrapper {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 18px 50px;
+    background-color: #084B9A; /* Biru utama */
+    color: #FFFFFF; /* Putih */
+    font-weight: 600;
+    text-decoration: none;
+    font-family: 'Coolvetica';
+    font-size: 22px;
+    border-radius: 100px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi bouncy */
+    letter-spacing: 1px;
+    box-shadow: 0 10px 20px rgba(8, 75, 154, 0.3);
+}
+
+.cta-button:hover {
+    transform: scale(1.1) rotate(-2deg);
+    background-color: #063771;
+    box-shadow: 0 15px 30px rgba(8, 75, 154, 0.4);
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* LOADING SCREEN STYLES */
+#loader {
+    position: fixed;
+    inset: 0;
+    background-color: #FFFFFF; /* Diubah ke putih agar logo Noctify terlihat */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.6s ease, visibility 0.6s;
+}
+.loader-logo {
+    width: 120px;
+    animation: loaderPulse 1.5s infinite alternate ease-in-out;
+}
+@keyframes loaderPulse {
+    from { transform: scale(0.8); opacity: 0.5; }
+    to { transform: scale(1.1); opacity: 1; }
+}
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* SCROLL REVEAL STYLES */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* HAMBURGER MENU STYLES */
+.hamburger-menu {
+  display: none; /* Sembunyikan secara default di desktop */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 1001; /* Pastikan di atas konten lain */
+  margin-right: 20px; /* Tambahkan sedikit margin di kanan */
+}
+
+.hamburger-menu .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #FFFFFF; /* Putih */
+  transition: all 0.3s ease;
+}
+
+/* Penyesuaian responsif untuk header dan navigasi */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px; /* Sesuaikan padding header untuk layar kecil */
+  }
+
+  header h1 {
+    margin-left: 0; /* Hapus margin kiri untuk logo di mobile */
+  }
+
+  nav ul {
+    margin-right: 0; /* Hapus margin kanan untuk nav di mobile */
+  }
+
+  /* Tampilkan menu hamburger */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* Sembunyikan navigasi desktop dan siapkan untuk tampilan mobile */
+  .nav-links {
+    position: fixed; /* Gunakan fixed untuk menutupi viewport */
+    top: 70px; /* Sesuaikan berdasarkan tinggi header Anda */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px); /* Tinggi penuh dikurangi tinggi header */
+  background-color: rgba(8, 75, 154, 0.95); /* Biru utama */
+    backdrop-filter: blur(10px); /* Efek blur opsional */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Mulai di luar layar ke kanan */
+    transition: transform 0.3s ease-in-out;
+    z-index: 999; /* Di bawah hamburger, di atas konten */
+  }
+
+  /* Saat nav aktif (di-toggle oleh JS) */
+  .nav-links.nav-active {
+    transform: translateX(0); /* Geser masuk ke tampilan */
+  }
+
+  .nav-links li {
+    margin: 20px 0; /* Beri jarak antar item menu */
+  }
+
+  .nav-links li a {
+    font-size: 24px; /* Ukuran font lebih besar untuk tautan mobile */
+    color: #FFFFFF; /* Putih */
+  }
+
+  /* Animasi hamburger menjadi 'X' */
+  .hamburger-menu.open .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+  .hamburger-menu.open .bar:nth-child(2) { opacity: 0; }
+  .hamburger-menu.open .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+}

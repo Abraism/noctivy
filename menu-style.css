@@ -1,0 +1,329 @@
+@font-face {
+  font-family: 'Photograph';
+  src: url(font/Photograph\ Signature.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url(font/Poppins-SemiBold.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Alterday';
+  src: url(font/Alterday.otf) format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mayonice';
+  src: url(font/Mayonice.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Coolvetica';
+  src: url(font/Coolvetica\ Rg.otf) format('opentype');
+  font-weight:normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Baret';
+  src: url(font/Barett\ Street.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'matcha';
+  src: url(font/Matcha\ Cih.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'pasar';
+  src: url(font/Pasartulis\ PERSONAL\ USE\ ONLY!.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* reset*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* diperbaiki dari 'cover' jadi 'border-box' */
+}
+
+/*body*/
+body {
+  background: linear-gradient(180deg, #FFFFFF, #F0F4FF);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* HEADER + NAV */
+header {
+  background-color: transparent;
+  padding: 15px 40px;
+  color: #084B9A;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  margin-left: 60px;
+  display: flex;
+  align-items: center;
+}
+
+header h1 img {
+  height: 50px;
+  width: auto;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  margin-right: 60px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #084B9A;
+  padding: 10px 20px;
+  font-size: 22px;
+  font-family: 'pasar';
+  background-image: linear-gradient(#084B9A, #084B9A);
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .25s ease;
+}
+
+.nav-links { /* Tambahkan kelas ini ke elemen ul di HTML Anda */
+  transition: transform 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  background-size: 100% 2px;
+  color: #4A90E2; /* Sedikit lebih terang saat hover */
+}
+
+/* judul */
+p {
+  text-align: left;
+  margin: 30px; 
+  margin-left: 120px;
+  font-size: 3rem;
+  font-family: 'Coolvetica';
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #084B9A;
+}
+
+@media (max-width: 768px) {
+  p {
+    font-size: 2rem;
+    margin-left: 20px;
+    text-align: center;
+  }
+}
+
+
+/* ==== FOTO VERTICAL ==== */
+.wrap1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background: transparent;
+}
+
+.item {
+  position: relative;
+  width: 250px;
+  overflow: hidden;
+  border-radius: 40px;
+  box-shadow: 0 8px 15px rgba(8, 75, 154, 0.2); /* Tambah shadow */
+  border: 4px solid #084B9A;
+  cursor: pointer;
+}
+
+.item img {
+  width: 100%;
+  display: block;
+  transition: 0.4s;
+  border-radius: 30px; /* biar wadah yang membentuk lengkung */
+}
+
+/* ==== FOTO LANDSCAPE ==== */
+.wrap2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+.item1 {
+  position: relative;
+  width: 430px;
+  overflow: hidden;
+  border-radius: 40px;
+  box-shadow: 0 8px 15px rgba(8, 75, 154, 0.2); /* Tambah shadow */
+  border: 4px solid #084B9A;
+  cursor: pointer;
+}
+
+.item1 img {
+  width: 100%;
+  display: block;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+/* ==== CAPTION / TEKS DI ATAS FOTO ==== */
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #084B9A;
+  background: rgba(255, 255, 255, 0.95); /* Lebih solid */
+  padding: 10px 20px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  text-align: center;
+  font-size: 1em;
+}
+
+/* ==== EFEK HOVER ==== */
+.item:hover img,
+.item1:hover img {
+  filter: brightness(0.7) grayscale(100%); /* Lebih halus */
+  transform: scale(1.25);
+  
+}
+
+.item:hover .caption,
+.item1:hover .caption {
+  opacity: 1;
+}
+
+/* HAMBURGER MENU STYLES */
+.hamburger-menu {
+  display: none; /* Sembunyikan secara default di desktop */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 1001; /* Pastikan di atas konten lain */
+  margin-right: 20px; /* Tambahkan sedikit margin di kanan */
+}
+
+.hamburger-menu .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #084B9A; /* Warna biru utama */
+  transition: all 0.3s ease;
+}
+
+/* Penyesuaian responsif untuk header dan navigasi */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px; /* Sesuaikan padding header untuk layar kecil */
+  }
+
+  header h1 {
+    margin-left: 0; /* Hapus margin kiri untuk logo di mobile */
+  }
+
+  nav ul {
+    margin-right: 0; /* Hapus margin kanan untuk nav di mobile */
+  }
+
+  /* Tampilkan menu hamburger */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* Sembunyikan navigasi desktop dan siapkan untuk tampilan mobile */
+  .nav-links {
+    position: fixed; /* Gunakan fixed untuk menutupi viewport */
+    top: 70px; /* Sesuaikan berdasarkan tinggi header Anda */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px); /* Tinggi penuh dikurangi tinggi header */
+    background-color: rgba(8, 75, 154, 0.95); /* Biru utama */
+    backdrop-filter: blur(10px); /* Efek blur opsional */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Mulai di luar layar ke kanan */
+    transition: transform 0.3s ease-in-out;
+    z-index: 999; /* Di bawah hamburger, di atas konten */
+  }
+
+  /* Saat nav aktif (di-toggle oleh JS) */
+  .nav-links.nav-active {
+    transform: translateX(0); /* Geser masuk ke tampilan */
+  }
+
+  .nav-links li {
+    margin: 20px 0; /* Beri jarak antar item menu */
+  }
+
+  .nav-links li a {
+    font-size: 24px; /* Ukuran font lebih besar untuk tautan mobile */
+    color: #FFFFFF; /* Putih untuk kontras */
+  }
+
+  /* Animasi hamburger menjadi 'X' */
+  .hamburger-menu.open .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+  .hamburger-menu.open .bar:nth-child(2) { opacity: 0; }
+  .hamburger-menu.open .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+}
+
+/* SCROLL REVEAL STYLES */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* LOADING SCREEN STYLES */
+#loader {
+    position: fixed;
+    inset: 0;
+    background-color: #FFFFFF; /* Putih */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.6s ease, visibility 0.6s;
+}
+.loader-logo {
+    width: 120px;
+    animation: loaderPulse 1.5s infinite alternate ease-in-out;
+}
+@keyframes loaderPulse {
+    from { transform: scale(0.8); opacity: 0.5; }
+    to { transform: scale(1.1); opacity: 1; }
+}
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}

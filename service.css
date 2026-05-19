@@ -1,0 +1,269 @@
+/* FONT IMPORT */
+@font-face {
+  font-family: 'Photograph';
+  src: url(font/Photograph\ Signature.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url(font/Poppins-SemiBold.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;;
+}
+@font-face {
+  font-family: 'Alterday';
+  src: url(font/Alterday.otf) format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mayonice';
+  src: url(font/Mayonice.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Coolvetica';
+  src: url(font/Coolvetica\ Rg.otf) format('opentype');
+  font-weight:normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Baret';
+  src: url(font/Barett\ Street.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url(font/Inter-VariableFont_opsz\,wght.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'matcha';
+  src: url(font/Matcha\ Cih.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'pasar';
+  src: url(font/Pasartulis\ PERSONAL\ USE\ ONLY!.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* GENERAL STYLE */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, #084B9A, #0A2A75); /* Tetap gelap untuk halaman ini */
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  color: white;
+}
+
+/* HEADER + NAV */
+header {
+  background-color: transparent;
+  padding: 15px 40px;
+  color: #FFFFFF; /* Putih */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  margin-left: 60px;
+  display: flex;
+  align-items: center;
+}
+
+header h1 img {
+  height: 50px;
+  width: auto;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  margin-right: 60px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color:#FFFFFF; /* Putih */
+  padding: 8px 20px;
+  font-size: 18px;
+  font-family: 'Coolvetica';
+  background-image: linear-gradient(#F1F0E4, #F1F0E4);
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .25s ease;
+}
+
+.nav-links { /* Tambahkan kelas ini ke elemen ul di HTML Anda */
+  transition: transform 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  background-size: 100% 2px;
+  color: #4A90E2; /* Sedikit lebih terang saat hover */
+}
+
+.judul {
+  padding: 20px;
+}
+
+.abu {
+  text-align: center;
+  margin: 0; 
+  font-size: 60px;
+  font-family: 'coolvetica';
+  font-weight: 900;
+  letter-spacing: 2px; /* Sedikit kurangi spacing */
+  color: #FFFFFF; /* Putih */
+}
+
+.buba {
+  margin:0px; 
+  font-size: 20px;
+  font-family: 'Inter';
+  font-weight: 900;
+  letter-spacing: 0.5px; /* Sedikit kurangi spacing */
+  color: #E0E0E0; /* Abu-abu terang */
+  text-align: center;
+  
+}
+
+.software-list {
+  margin: 90px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background: transparent;
+  padding-bottom: 30vh;
+}
+
+
+/* ITEM */
+.software-item {
+  background: #FFFFFF; /* Putih */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: auto;
+  min-height: 80px;
+  padding: 15px;
+  border-radius: 20px; /* Lebih rounded */
+  color: #084B9A;
+  border-bottom: 5px solid #0A2A75; /* Tetap biru gelap */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Tambah shadow */
+}
+
+/* LOGO (IMAGE) */
+.logo-box {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  padding: 5px;
+}
+
+/* HAMBURGER MENU STYLES */
+.hamburger-menu {
+  display: none; /* Sembunyikan secara default di desktop */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 1001; /* Pastikan di atas konten lain */
+  margin-right: 20px; /* Tambahkan sedikit margin di kanan */
+}
+
+.hamburger-menu .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #FFFFFF; /* Putih */
+  transition: all 0.3s ease;
+}
+
+/* Penyesuaian responsif untuk header dan navigasi */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px; /* Sesuaikan padding header untuk layar kecil */
+  }
+
+  header h1 {
+    margin-left: 0; /* Hapus margin kiri untuk logo di mobile */
+  }
+
+  nav ul {
+    margin-right: 0; /* Hapus margin kanan untuk nav di mobile */
+  }
+
+  .software-list {
+    margin: 20px;
+  }
+
+  /* Tampilkan menu hamburger */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* Sembunyikan navigasi desktop dan siapkan untuk tampilan mobile */
+  .nav-links {
+    position: fixed; /* Gunakan fixed untuk menutupi viewport */
+    top: 70px; /* Sesuaikan berdasarkan tinggi header Anda */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px); /* Tinggi penuh dikurangi tinggi header */
+    background-color: rgba(8, 75, 154, 0.95); /* Biru utama */
+    backdrop-filter: blur(10px); /* Efek blur opsional */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Mulai di luar layar ke kanan */
+    transition: transform 0.3s ease-in-out;
+    z-index: 999; /* Di bawah hamburger, di atas konten */
+  }
+
+  /* Saat nav aktif (di-toggle oleh JS) */
+  .nav-links.nav-active {
+    transform: translateX(0); /* Geser masuk ke tampilan */
+  }
+
+  .nav-links li {
+    margin: 20px 0; /* Beri jarak antar item menu */
+  }
+
+  .nav-links li a {
+    font-size: 24px; /* Ukuran font lebih besar untuk tautan mobile */
+    color: #FFFFFF; /* Putih */
+  }
+
+  /* Animasi hamburger menjadi 'X' */
+  .hamburger-menu.open .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+  .hamburger-menu.open .bar:nth-child(2) { opacity: 0; }
+  .hamburger-menu.open .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+}
+
+/* SCROLL REVEAL STYLES */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
