@@ -53,6 +53,11 @@
   box-sizing: border-box; /* diperbaiki dari 'cover' jadi 'border-box' */
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /*body*/
 body {
   background: linear-gradient(180deg, #FFFFFF, #F0F4FF);
@@ -60,7 +65,25 @@ body {
   background-position: center;
   background-attachment: fixed;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  --icon-toggle-color: #084B9A;
 }
+
+/* DARK MODE OVERRIDES */
+body.dark-mode {
+  background: linear-gradient(180deg, #051937, #004d7a);
+  color: #f0f4ff;
+  --icon-toggle-color: #ffcc00;
+}
+
+body.dark-mode header {
+  background: rgba(10, 25, 47, 0.9);
+  color: #f0f4ff; /* Menetapkan warna teks header di dark mode */
+}
+
+body.dark-mode .section-title { color: #f0f4ff; border-color: #f0f4ff; }
+body.dark-mode .filter-btn { color: #f0f4ff; border-color: #f0f4ff; }
+body.dark-mode .item, body.dark-mode .item1 { border-color: #4A90E2; }
 
 /* HEADER + NAV */
 header {
@@ -68,20 +91,25 @@ header {
   padding: 15px 40px;
   color: #084B9A;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+nav {
+  margin-left: auto;
 }
 
 header h1 {
   margin: 0;
-  margin-left: 60px;
+  margin-left: 0;
   display: flex;
   align-items: center;
 }
 
-header h1 img {
-  height: 50px;
+header h1 .logo-svg {
+  height: 45px;
   width: auto;
+  transition: color 0.3s ease;
+  color: inherit;
 }
 
 nav ul {
@@ -90,14 +118,41 @@ nav ul {
   padding: 0;
   display: flex;
   gap: 10px;
-  margin-right: 60px;
+  margin-right: 0;
 }
+
+/* THEME TOGGLE STYLES */
+.theme-btn {
+  background: none;
+  border: 2px solid var(--icon-toggle-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--icon-toggle-color);
+  transition: all 0.3s ease;
+  padding: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.theme-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+body.dark-mode .sun-icon { display: none; }
+body:not(.dark-mode) .moon-icon { display: none; }
 
 nav ul li a {
   text-decoration: none;
   color: #084B9A;
   padding: 10px 20px;
-  font-size: 22px;
+  font-size: 18px;
   font-family: 'pasar';
   background-image: linear-gradient(#084B9A, #084B9A);
   background-position: 50% 100%;
@@ -116,23 +171,60 @@ nav ul li a:hover {
 }
 
 /* judul */
-p {
-  text-align: left;
-  margin: 30px; 
-  margin-left: 120px;
-  font-size: 3rem;
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    border: 2px solid #084B9A;
+    background: transparent;
+    color: #084B9A;
+    font-family: 'Coolvetica';
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: #084B9A;
+    color: #fff;
+}
+
+.gallery-section {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title { /* Refined margin for clarity */
+  text-align: center;
+  margin: 80px auto 40px auto;
+  display: table; /* Menggunakan table agar lebar elemen mengikuti teks untuk border-bottom */
+  font-size: 2.2rem;
   font-family: 'Coolvetica';
-  font-weight: 900;
+  font-weight: 500;
   letter-spacing: 3px;
   color: #084B9A;
+  border-bottom: 3px solid #084B9A;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+}
+p { /* Removed conflicting styling for generic p tag */
 }
 
 @media (max-width: 768px) {
-  p {
+  .section-title {
     font-size: 2rem;
-    margin-left: 20px;
+    margin-left: 0;
     text-align: center;
   }
+  /* Removed the conflicting p rule for mobile as well */
 }
 
 
@@ -141,26 +233,31 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 35px; /* Sedikit dirapatkan untuk kohesi visual yang lebih baik */
+  padding: 20px 5%; /* Diperkecil agar di mobile tetap luas */
   background: transparent;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .item {
   position: relative;
-  width: 250px;
+  flex: 1 1 280px; /* Lebih fleksibel di berbagai ukuran layar */
+  max-width: 320px; /* Batasi agar tidak terlalu besar di layar ultrawide */
   overflow: hidden;
-  border-radius: 40px;
-  box-shadow: 0 8px 15px rgba(8, 75, 154, 0.2); /* Tambah shadow */
-  border: 4px solid #084B9A;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Shadow lebih halus/natural */
+  border: 2px solid #084B9A; /* Garis lebih tipis agar lebih elegan */
   cursor: pointer;
+  aspect-ratio: 3 / 4; /* Paksa rasio portrait yang konsisten */
 }
 
 .item img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
   transition: 0.4s;
-  border-radius: 30px; /* biar wadah yang membentuk lengkung */
 }
 
 /* ==== FOTO LANDSCAPE ==== */
@@ -168,25 +265,38 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 35px;
+  padding: 0 5% 80px 5%; 
   margin-bottom: 80px;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .item1 {
   position: relative;
-  width: 430px;
+  flex: 1 1 400px; /* Basis lebih lebar untuk landscape */
+  max-width: 550px;
   overflow: hidden;
-  border-radius: 40px;
-  box-shadow: 0 8px 15px rgba(8, 75, 154, 0.2); /* Tambah shadow */
-  border: 4px solid #084B9A;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid #084B9A;
   cursor: pointer;
+  aspect-ratio: 16 / 9; /* Paksa rasio landscape yang sinematik */
 }
 
 .item1 img {
   width: 100%;
+  height: 100%;
+  object-fit: cover; /* Pastikan gambar mengisi frame landscape dengan rapi */
   display: block;
   transition: 0.4s;
-  border-radius: 30px;
+}
+
+@media (max-width: 600px) {
+  .item, .item1 {
+    width: 100%;
+    min-width: unset;
+  }
 }
 
 /* ==== CAPTION / TEKS DI ATAS FOTO ==== */
@@ -209,13 +319,174 @@ p {
 .item:hover img,
 .item1:hover img {
   filter: brightness(0.7) grayscale(100%); /* Lebih halus */
-  transform: scale(1.25);
+  transform: scale(1.05); /* Skala hover sangat halus */
   
 }
 
 .item:hover .caption,
 .item1:hover .caption {
   opacity: 1;
+}
+
+/* VIDEO STYLES */
+.video-preview {
+    border-radius: 30px;
+    display: block;
+    border: 4px solid #084B9A;
+}
+
+.video-caption {
+    text-align: center;
+    font-family: 'Poppins';
+    font-weight: 600;
+    color: #084B9A;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* YouTube Thumbnail Styles */
+.youtube-item, .video-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.youtube-thumbnail-wrapper, .video-thumbnail-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 40px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.video-preview-thumbnail {
+    /* Ganti absolute ke relative agar item1 mengikuti tinggi gambar poster */
+    position: relative; 
+    top: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 40px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png') no-repeat center center; /* YouTube Play button icon */
+    background-size: contain;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.youtube-item:hover .play-button-overlay, 
+.video-item:hover .play-button-overlay {
+    opacity: 1;
+}
+
+.youtube-item:hover .caption, 
+.video-item:hover .caption {
+    opacity: 1;
+}
+
+/* LIGHTBOX STYLES */
+#lightbox {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden; /* Lebih stabil daripada display: none untuk transisi */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none; /* Mencegah interaksi saat tertutup */
+    backdrop-filter: blur(8px); /* Memberikan efek blur pada background */
+    display: flex !important; /* Memastikan selalu flex agar konten di tengah */
+    transform: translateZ(0); /* Force GPU rendering untuk memastikan di atas segalanya */
+}
+
+#lightbox.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Tambahan animasi konten lightbox */
+#lightbox-container {
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+#lightbox.active #lightbox-container {
+    transform: scale(1);
+}
+
+#lightbox-container img {
+    display: block;
+    max-width: 90vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    border: 2px solid #084B9A;
+}
+
+#lightbox-container video,
+#lightbox-container iframe {
+    display: block;
+    width: 85vw; /* Lebar video di layar */
+    max-width: 1000px; /* Batas maksimal di desktop */
+    aspect-ratio: 16 / 9; /* Rasio standar video YouTube */
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    border: 2px solid #084B9A;
+    background: #000;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#lightbox-caption {
+    color: #fff;
+    margin-top: 20px;
+    font-family: 'Poppins';
+    font-size: 1.2rem;
 }
 
 /* HAMBURGER MENU STYLES */
@@ -296,12 +567,28 @@ p {
 /* SCROLL REVEAL STYLES */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1), transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+    will-change: opacity, transform;
 }
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+.reveal-left {
+    transform: translateX(-50px);
+}
+
+.reveal-right {
+    transform: translateX(50px);
+}
+
+.reveal-scale {
+    transform: scale(0.9);
+}
+.reveal-scale.active {
+    transform: scale(1);
 }
 
 /* LOADING SCREEN STYLES */
